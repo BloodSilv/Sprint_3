@@ -1,0 +1,1 @@
+{"firstName":"Petr","lastName":"Petrov","address":"Lenina, 12","color":["BLACK"],"phone":"+7 800 333 33 22","comment":"HI","rentTime":4,"deliveryDate":"2022-05-05","metroStation":2}
