@@ -7,7 +7,6 @@ import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 /*  Задание Удалить курьера
@@ -15,9 +14,6 @@ import static org.junit.Assert.*;
     2. успешный запрос возвращает ok: true;
     3. если отправить запрос без id, вернётся ошибка;
     4. если отправить запрос с несуществующим id, вернётся ошибка.
-
-    п. 1. пересекатеся с п.п. 3, 4
-    п. 2 Реализован в @After, т.к для всех тестов создается тестовый курьер, после тестов он удаляется.
  */
 
 public class CourierDeleteTest {
@@ -27,9 +23,9 @@ public class CourierDeleteTest {
 
     @Before
     public void setUp() {
-        courierLogin = "TestCourier";
+        courierLogin = "TestCourier1";
         courierPassword = "asasas";
-        String courierFirstName = "Proveryalshik";
+        String courierFirstName = "Proveryalshik1";
         RegisterCourier courier = new RegisterCourier(courierLogin, courierPassword, courierFirstName);
         courier.registerNewCourierAndReturnLoginPassword();
         loginId = new LoginCourier(courierLogin, courierPassword);

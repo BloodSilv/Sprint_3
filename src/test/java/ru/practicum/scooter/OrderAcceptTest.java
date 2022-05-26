@@ -7,7 +7,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -21,9 +20,9 @@ public class OrderAcceptTest {
 
     @Before
     public void setUp() {
-        courierLogin = "TestCourier";
+        courierLogin = "TestCourier1";
         courierPassword = "asasas";
-        String courierFirstName = "TestCourier";
+        String courierFirstName = "TestCourier1";
         RegisterCourier courier = new RegisterCourier(courierLogin, courierPassword, courierFirstName);
         courier.registerNewCourierAndReturnLoginPassword();
         loginId = new LoginCourier(courierLogin, courierPassword);
@@ -81,7 +80,7 @@ public class OrderAcceptTest {
     }
 
     @After
-    public void rollBck(){
+    public void rollBck() {
     }
 }
 

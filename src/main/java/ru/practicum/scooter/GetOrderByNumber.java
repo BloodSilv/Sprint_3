@@ -3,7 +3,6 @@ package ru.practicum.scooter;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-
 import static io.restassured.RestAssured.given;
 
 class GetOrderByNumber extends BaseUrl {
@@ -21,7 +20,7 @@ class GetOrderByNumber extends BaseUrl {
         return given()
                 .queryParams("t", this.orderTrack)
                 .when()
-                .get(getBaseUrl() +  "/api/v1/orders/track");
+                .get(getBaseUrl() + "/api/v1/orders/track");
     }
 }
 

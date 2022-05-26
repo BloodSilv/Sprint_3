@@ -3,10 +3,9 @@ package ru.practicum.scooter;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-
 import static io.restassured.RestAssured.given;
 
-class DeleteCourier extends BaseUrl{
+class DeleteCourier extends BaseUrl {
 
     private final LoginCourier loginId;
     private final Boolean getCourierId;
@@ -37,9 +36,10 @@ class DeleteCourier extends BaseUrl{
         if (this.getCourierId) {
             this.courierId = String.valueOf(loginId.getIdCourier());
         }
-        return  given()
+
+        return given()
                 .pathParam("id", this.courierId)
                 .when()
-                .delete(getBaseUrl() +  "/api/v1/courier/{id}");
+                .delete(getBaseUrl() + "/api/v1/courier/{id}");
     }
 }

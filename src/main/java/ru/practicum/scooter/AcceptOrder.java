@@ -3,11 +3,9 @@ package ru.practicum.scooter;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-
-
 import static io.restassured.RestAssured.given;
 
-class AcceptOrder extends BaseUrl{
+class AcceptOrder extends BaseUrl {
 
     private final String orderId;
     private final String courierId;
@@ -25,9 +23,8 @@ class AcceptOrder extends BaseUrl{
                 .pathParam("id", this.orderId)
                 .queryParam("courierId", this.courierId)
                 .when()
-                .put(getBaseUrl() +  "/api/v1/orders/accept/{id}");
+                .put(getBaseUrl() + "/api/v1/orders/accept/{id}");
     }
 }
-
 
 

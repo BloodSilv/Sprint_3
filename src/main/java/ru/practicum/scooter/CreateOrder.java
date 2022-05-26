@@ -4,12 +4,10 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import org.json.JSONObject;
-
 import java.util.List;
-
 import static io.restassured.RestAssured.given;
 
-public class CreateOrder extends BaseUrl{
+public class CreateOrder extends BaseUrl {
 
     private final List<String> color;
 
@@ -17,7 +15,7 @@ public class CreateOrder extends BaseUrl{
         this.color = color;
     }
 
-    public JSONObject getJson(){
+    public JSONObject getJson() {
         return new JSONObject()
                 .put("firstName", "Petr")
                 .put("lastName", "Petrov")
@@ -35,14 +33,12 @@ public class CreateOrder extends BaseUrl{
         JSONObject json = getJson();
         json.put("color", this.color);
         Allure.attachment("Передются данные заказа: ", String.valueOf(json));
-
         return given()
                 .header("Content-type", "application/json")
                 .and()
                 .body(json.toString())
                 .when()
-                .post(getBaseUrl() +  "/api/v1/orders");
+                .post(getBaseUrl() + "/api/v1/orders");
     }
-
 }
 

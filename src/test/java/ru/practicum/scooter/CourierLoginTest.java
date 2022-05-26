@@ -17,9 +17,9 @@ public class CourierLoginTest {
     @Before
     @Step("Регистрация новго пользователя")
     public void setUp() {
-        courierLogin = "TestCourier";
+        courierLogin = "TestCourier1";
         courierPassword = "asasas";
-        String courierFirstName = "TestCourier";
+        String courierFirstName = "TestCourier1";
         RegisterCourier courier = new RegisterCourier(courierLogin, courierPassword, courierFirstName);
         courier.registerNewCourierAndReturnLoginPassword();
     }
@@ -30,9 +30,7 @@ public class CourierLoginTest {
     @Description("Test for /api/v1/courier/login endpoint")
     public void testLoginCourier() {
         LoginCourier loginId = new LoginCourier(courierLogin, courierPassword);
-        assertEquals(loginId.loginCourier(),200 );
-        DeleteCourier courier = new DeleteCourier(loginId);
-        courier.deleteCourier(courierLogin, courierPassword);
+        assertEquals(loginId.loginCourier(), 200);
     }
 
     @Test
@@ -41,7 +39,7 @@ public class CourierLoginTest {
     @Description("Test for /api/v1/courier/login endpoint")
     public void testEmptyPasswordForLogin() {
         LoginCourier courier = new LoginCourier(courierLogin, "");
-        assertEquals(courier.loginCourier(),400 );
+        assertEquals(courier.loginCourier(), 400);
     }
 
     @Test
@@ -50,7 +48,7 @@ public class CourierLoginTest {
     @Description("Test for /api/v1/courier/login endpoint")
     public void testEmptyLoginForLogin() {
         LoginCourier courier = new LoginCourier("", courierPassword);
-        assertEquals(courier.loginCourier(),400 );
+        assertEquals(courier.loginCourier(), 400);
     }
 
     @Test
@@ -59,7 +57,7 @@ public class CourierLoginTest {
     @Description("Test for /api/v1/courier/login endpoint")
     public void testIncorrectLoginForLogin() {
         LoginCourier courier = new LoginCourier("qwertytrwer", courierPassword);
-        assertEquals(courier.loginCourier(),404 );
+        assertEquals(courier.loginCourier(), 404);
     }
 
     @Test
@@ -68,7 +66,7 @@ public class CourierLoginTest {
     @Description("Test for /api/v1/courier/login endpoint")
     public void testIncorrectPasswordForLogin() {
         LoginCourier courier = new LoginCourier(courierLogin, "qwertytrwer");
-        assertEquals(courier.loginCourier(),404 );
+        assertEquals(courier.loginCourier(), 404);
     }
 
     @Test
@@ -78,8 +76,6 @@ public class CourierLoginTest {
     public void testLoginIdCourier() {
         LoginCourier loginId = new LoginCourier(courierLogin, courierPassword);
         assertTrue(loginId.getIdCourier() > 0);
-        DeleteCourier courier = new DeleteCourier(loginId);
-        courier.deleteCourier(courierLogin, courierPassword);
     }
 
     @Test
@@ -88,10 +84,13 @@ public class CourierLoginTest {
     @Description("Test for /api/v1/courier/login endpoint")
     public void testLoginIdCourierIncorrectFieldPassword() {
         LoginCourier courier = new LoginCourier(courierLogin);
-        assertEquals(courier.loginCourier(),504 );
+        assertEquals(courier.loginCourier(), 504);
     }
 
     @After
     public void rollBck(){
+        LoginCourier loginId = new LoginCourier(courierLogin, courierPassword);
+        DeleteCourier courier = new DeleteCourier(loginId);
+        courier.deleteCourier(courierLogin, courierPassword);
     }
 }
